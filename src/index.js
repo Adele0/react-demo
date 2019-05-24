@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ClickCounter from './bookcode/01ClickCounter';
+// import Example from './bookcode/01ClickCounter';
+import Example from './bookcode/02ControlPanel';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<ClickCounter />, document.getElementById('root'));
+ReactDOM.render(<Example />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
