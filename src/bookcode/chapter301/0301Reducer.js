@@ -6,7 +6,13 @@ export default (state, action) => {
 
   switch (action.type) {
     case ActionTypes.INCREMENT:
+      // 展开操作符spread operator
       return {...state, [counterCaption]: state[counterCaption] + 1};
+      /*
+      const newState = Object.assign({}, state)
+      newState[counterCaption] ++
+      return newState
+       */
     case ActionTypes.DECREMENT:
       return {...state, [counterCaption]: state[counterCaption] - 1};
     default:

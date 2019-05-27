@@ -19,6 +19,7 @@ class Summary extends Component {
     const state = store.getState();
     let sum = 0;
     for (const key in state) {
+      // hasOwnProperty()方法用来检测一个对象自身(不包括原型链)是否具有指定名称的属性。有，返回true，否则返回false
       if (state.hasOwnProperty(key)) {
         sum += state[key];
       }
