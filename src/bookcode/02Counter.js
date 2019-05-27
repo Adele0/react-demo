@@ -6,9 +6,12 @@ const buttonStyle = {
 
 class Counter extends Component {
   constructor(props) {
+    // 不调用super(props)组件实例的所有成员函数就无法通过this.props访问到父组件传递的props值
     super(props)
+    // es6创造的react组件类并不自动绑定this到当前实例对象
     this.onClickIncrementButton = this.onClickIncrementButton.bind(this);
     this.onClickDecrementButton = this.onClickDecrementButton.bind(this);
+    // 必须是js对象
     this.state = {
       count: props.initValue
     }
@@ -27,10 +30,12 @@ class Counter extends Component {
     const newValue = isIncrement ? previousValue + 1 : previousValue - 1;
 
     this.setState({count: newValue})
+    // 当前组件传递给外界props（函数）
     this.props.onUpdate(newValue, previousValue)
   }
 
   render() {
+    // ES6 解构
     const {caption} = this.props;
     return(
       <div>
