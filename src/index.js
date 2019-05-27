@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import Example from './bookcode/01ClickCounter';
-// import Example from './bookcode/02ControlPanel';
-import Example from './bookcode/0301ControlPanel';
+// import Example from './bookcode/chapter1/01ClickCounter';
+// import Example from './bookcode/chapter2/02ControlPanel';
+import Example from './bookcode/chapter301/0301ControlPanel';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Example />, document.getElementById('root'));
