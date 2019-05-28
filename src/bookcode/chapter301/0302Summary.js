@@ -10,7 +10,7 @@ import store from './0301Store.js';
 //   }
 // }
 
-// 没有状态，不需要用对象表示。连类偶读不需要缩略为一个函数
+// 没有状态，不需要用对象表示。连类都不需要，缩略为一个函数
 function Summary ({sum}) {
   return (
     <div>Total Count: {sum}</div>
