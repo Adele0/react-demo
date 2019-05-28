@@ -4,8 +4,16 @@ import React, { Component } from 'react';
 // import Summary from './0301Summary.js';
 
 // dumb-smart
-import Counter from './0302Counter.js';
-import Summary from './0302Summary.js';
+// import Counter from './0302Counter.js';
+// import Summary from './0302Summary.js';
+
+//content(报错 无法重现)
+// import Counter from './0303Counter.js';
+// import Summary from './0303Summary.js';
+
+//react-redux
+import Counter from './0304Counter.js';
+import Summary from './0304Summary.js';
 
 const style = {
   margin: '20px'
