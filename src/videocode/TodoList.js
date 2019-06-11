@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
+import React, { Component } from 'react';
 import store from './store';
 import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
+import TodoListUI from './TodoListUI';
 
+// 容器组件（聪明组件）
 class TodoList extends Component {
 
   constructor(props) {
@@ -12,32 +12,21 @@ class TodoList extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
     this.listenEnter = this.listenEnter.bind(this);
     store.subscribe(this.handleStoreChange)
   }
 
   render() { 
     return ( 
-      /*  js注释需要括号，切单行需要换行 fragement占位符  */
-      <Fragment>
-        {/* jsx注释 */}
-        <div style={{marginTop: '10px', marginLeft: '10px'}}>
-          <Input
-            placeholder='请输入'
-            onKeyUp={this.listenEnter}
-            onChange={this.handleInputChange}
-            value={this.state.inputValue}
-            style={{width: '300px', marginRight: '10px'}}>
-          </Input>
-          <Button type="primary" onClick={this.handleBtnClick}>添加</Button>
-          <List
-            bordered
-            dataSource={this.state.list}
-            style={{width: '300px', marginTop: '10px'}}
-            renderItem={(item, index) => (<List.Item onClick={this.handleDeleteItem.bind(this, index)}>{item}</List.Item>)}
-          />
-        </div>
-      </Fragment>
+      <TodoListUI
+        list={this.state.list}
+        inputValue={this.state.inputValue}
+        listenEnter={this.listenEnter}
+        handleInputChange={this.handleInputChange}
+        handleBtnClick={this.handleBtnClick}
+        handleDeleteItem={this.handleDeleteItem}
+      />
     );
   }
 
