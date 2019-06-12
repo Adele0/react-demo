@@ -1,4 +1,4 @@
-import { INIT_DATA, CHANGE_INPUT_VULAE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
+import { ADD_DATA, INIT_DATA, CHANGE_INPUT_VULAE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
 
 const defaultState = {
   inputValue: '',
@@ -31,6 +31,14 @@ export default (state = defaultState, action) => {
   if (action.type === INIT_DATA) {
     const newState = JSON.parse(JSON.stringify(state));
     newState.list = action.data;
+    return newState
+  }
+  // 练习thunk
+  if (action.type === ADD_DATA) {
+    const newState = JSON.parse(JSON.stringify(state));
+    // 数据组添加数组
+    // newState.list.push.apply(newState.list, action.data);
+    newState.list.push(...action.data);
     return newState
   }
 
