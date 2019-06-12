@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import store from './store';
-import { addTodoItem, getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
+// 原始异步请求放在DidMount里
+// import axios from 'axios'
+// import { initData, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
+// thunk
+// import { addTodoItem, getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
+// saga
+import { getTodoList_saga, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
 
 // 容器组件（聪明组件）
@@ -32,7 +38,19 @@ class TodoList extends Component {
 
   // 将异步请求统一放在action中，使用中间件（redux-thunk）
   componentDidMount() {
-    const action = getTodoList()
+    // 原始请求
+    // axios.get('https://www.easy-mock.com/mock/5d004ef495de7c77f8700638/video/mock').then((res) => {
+    //   const data = res.data.array
+    //   const action = initData(data)
+    //   store.dispatch(action)
+    // })
+
+    // thunk
+    // const action = getTodoList()
+    // store.dispatch(action)
+
+    // SAGA
+    const action = getTodoList_saga()
     store.dispatch(action)
   }
 
@@ -41,16 +59,17 @@ class TodoList extends Component {
     store.dispatch(action)
   }
 
-  // handleBtnClick() {
-  //   const action = getAddItemAction()
-  //   store.dispatch(action)
-  // }
-
-  // 练习 thunk
+  // 原来的点击按钮+事件
   handleBtnClick() {
-    const action = addTodoItem()
+    const action = getAddItemAction()
     store.dispatch(action)
   }
+
+  // 练习 thunk增加异步数据事件
+  // handleBtnClick() {
+  //   const action = addTodoItem()
+  //   store.dispatch(action)
+  // }
 
   handleDeleteItem(index) {
     const action = getDeleteItemAction(index)

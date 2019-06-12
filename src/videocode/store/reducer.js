@@ -1,4 +1,4 @@
-import { ADD_DATA, INIT_DATA, CHANGE_INPUT_VULAE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
+import { ADD_DATA_SAGA, ADD_DATA, INIT_DATA, CHANGE_INPUT_VULAE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
 
 const defaultState = {
   inputValue: '',
@@ -28,6 +28,7 @@ export default (state = defaultState, action) => {
     return newState
   }
 
+  // thunk
   if (action.type === INIT_DATA) {
     const newState = JSON.parse(JSON.stringify(state));
     newState.list = action.data;
@@ -42,5 +43,12 @@ export default (state = defaultState, action) => {
     return newState
   }
 
+  // SAGA
+  if (action.type === ADD_DATA_SAGA) {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.list = action.data;
+    return newState
+  }
+  
   return state
 };

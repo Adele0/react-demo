@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ADD_DATA, INIT_DATA, CHANGE_INPUT_VULAE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
+import { ADD_DATA_SAGA, ADD_DATA, INIT_DATA, CHANGE_INPUT_VULAE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
 
 export const getInputChangeAction = (value) => ({
   type: CHANGE_INPUT_VULAE,
@@ -47,3 +47,8 @@ export const addTodoItem = () => {
     })
   }
 }
+
+// 使用redux-saga返回也是对象
+export const getTodoList_saga = () => ({
+  type: ADD_DATA_SAGA
+})
