@@ -24,9 +24,22 @@ import ReactDOM from 'react-dom';
 
 
 /*
-* 视频学习代码 
+* 视频学习代码
 */
-import TodoList from './videocode/TodoList.js';
-ReactDOM.render(<TodoList />, document.getElementById('root'))
+// (saga之前)
+// import TodoList from './videocode/beforeSaga/TodoList';
+// ReactDOM.render(<TodoList />, document.getElementById('root'))
+// react-redux
+import TodoList from './videocode/reactRedux/TodoList';
+import store from './videocode/reactRedux/store';
+import { Provider } from 'react-redux';
+
+const App = (
+  <Provider store={store}>
+    <TodoList />
+  </Provider>
+)
+
+ReactDOM.render(App, document.getElementById('root'))
 
 // serviceWorker.unregister();
