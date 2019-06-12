@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import store from './store';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
+import { initData, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
 
 // 容器组件（聪明组件）
@@ -28,6 +29,15 @@ class TodoList extends Component {
         handleDeleteItem={this.handleDeleteItem}
       />
     );
+  }
+
+  componentDidMount() {
+    axios.get('https://www.easy-mock.com/mock/5d004ef495de7c77f8700638/video/mock').then((res) => {
+      const data = res.data.array
+      const action = initData(data)
+      // console.log(action)
+      store.dispatch(action)
+    })
   }
 
   handleInputChange(e) {
